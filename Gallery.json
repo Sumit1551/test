@@ -1,0 +1,87 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "de54920e-e1de-4dcd-82ce-2cc84a6f7c2d",
+            "version": "KqlParameterItem/1.0",
+            "name": "Subscription",
+            "type": 6,
+            "isRequired": true,
+            "typeSettings": {
+              "additionalResourceOptions": [
+                "value::1"
+              ],
+              "includeAll": false,
+              "showDefault": false
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "defaultValue": "value::1"
+          },
+          {
+            "id": "ee325c1e-1f38-4646-90ad-52ee4c3ef859",
+            "version": "KqlParameterItem/1.0",
+            "name": "ApplicationName",
+            "type": 1,
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "value": "A"
+          },
+          {
+            "id": "f487e81c-de54-4a01-a5ee-7a37dc2f6aec",
+            "version": "KqlParameterItem/1.0",
+            "name": "ResourceType",
+            "type": 7,
+            "isRequired": true,
+            "multiSelect": true,
+            "quote": "'",
+            "delimiter": ",",
+            "value": [
+              "value::all"
+            ],
+            "typeSettings": {
+              "additionalResourceOptions": [
+                "value::all"
+              ],
+              "includeAll": true,
+              "showDefault": false
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            }
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "parameters - 0"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "Resources\r\n| extend department = tags.App\r\n| where tags.App == '{ApplicationName}' \r\n| project name,id",
+        "size": 0,
+        "showExportToExcel": true,
+        "queryType": 1,
+        "resourceType": "microsoft.resourcegraph/resources",
+        "crossComponentResources": [
+          "value::all"
+        ]
+      },
+      "name": "query - 1"
+    }
+  ],
+  "fallbackResourceIds": [
+    "azure monitor"
+  ],
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
